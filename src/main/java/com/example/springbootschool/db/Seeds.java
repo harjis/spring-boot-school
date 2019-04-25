@@ -29,6 +29,8 @@ public class Seeds {
     void initCources(CourseRepository courseRepository, TeacherRepository teacherRepository) {
         Course course = new Course("Course 1");
         Course course2 = new Course("Course 2");
+        courseRepository.save(course);
+        courseRepository.save(course2);
 
         Teacher teacher = new Teacher("Teacher 1");
         Teacher teacher2 = new Teacher("Teacher 2");
@@ -36,7 +38,7 @@ public class Seeds {
         course.addTeachers(new HashSet<>(Arrays.asList(teacher, teacher2)));
         course2.addTeachers(new HashSet<>(Arrays.asList(teacher2)));
 
-        courseRepository.save(course);
-        courseRepository.save(course2);
+        teacherRepository.save(teacher);
+        teacherRepository.save(teacher2);
     }
 }

@@ -17,7 +17,7 @@ public class Course {
 
     private String name;
 
-    @ManyToMany(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+    @ManyToMany(cascade = {CascadeType.MERGE})
     @JoinTable(
             name = "cources_teachers",
             joinColumns = {@JoinColumn(name = "teacher_id")},
