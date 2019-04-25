@@ -22,6 +22,7 @@ public class CourseService {
     }
 
     public List<Course> findAllEager() {
+        // Notice this doesnt do what I want it to do
         return entityManager.createQuery(
                 "select distinct c " +
                         "from Course c " +
