@@ -1,5 +1,6 @@
 package com.example.springbootschool.app.entities;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -17,9 +18,10 @@ public class Course {
 
     private String name;
 
+    @JsonManagedReference
     @ManyToMany(cascade = {CascadeType.MERGE})
     @JoinTable(
-            name = "cources_teachers",
+            name = "courses_teachers",
             joinColumns = {@JoinColumn(name = "teacher_id")},
             inverseJoinColumns = {@JoinColumn(name = "course_id")}
     )

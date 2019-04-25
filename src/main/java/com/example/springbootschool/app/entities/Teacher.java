@@ -1,5 +1,6 @@
 package com.example.springbootschool.app.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -24,6 +25,7 @@ public class Teacher {
 
     private String name;
 
+    @JsonBackReference
     @ManyToMany(mappedBy = "teachers")
     private final Set<Course> courses = new HashSet<>();
 
