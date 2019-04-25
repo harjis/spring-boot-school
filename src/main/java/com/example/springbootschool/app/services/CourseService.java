@@ -21,11 +21,12 @@ public class CourseService {
         ).getResultList();
     }
 
-    public List<Course> findAllEager(){
+    public List<Course> findAllEager() {
         return entityManager.createQuery(
-                "select c " +
+                "select distinct c " +
                         "from Course c " +
-                        "join fetch c.teachers t", Course.class
+                        "left join fetch c.teachers t" +
+                        "left join fetch c.students s ", Course.class
         ).getResultList();
     }
 }

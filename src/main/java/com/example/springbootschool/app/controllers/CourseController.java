@@ -26,10 +26,12 @@ public class CourseController {
         } else {
             courses = courseService.findAll();
         }
-
+        System.out.println(courses.size());
         for (Course course : courses) {
             System.out.println(course.getTeachers());
+            System.out.println(course.getStudents());
         }
+
         return courses;
     }
 }

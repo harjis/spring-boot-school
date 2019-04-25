@@ -27,6 +27,15 @@ public class Course {
     )
     private final Set<Teacher> teachers = new HashSet<>();
 
+    @JsonManagedReference
+    @ManyToMany(cascade = {CascadeType.MERGE})
+    @JoinTable(
+            name = "courses_students",
+            joinColumns = {@JoinColumn(name = "student_id")},
+            inverseJoinColumns = {@JoinColumn(name = "course_id")}
+    )
+    private final Set<Student> students = new HashSet<>();
+
     public Course(String name) {
         this.name = name;
     }
@@ -37,8 +46,19 @@ public class Course {
         }
     }
 
-    public void addTeacher(Teacher teacher){
+    public void addTeacher(Teacher teacher) {
         teachers.add(teacher);
         teacher.getCourses().add(this);
+    }
+
+    public void addStudents(Set<Student> students) {
+        for (Student student : students) {
+            this.addStudent(student);
+        }
+    }
+
+    public void addStudent(Student student) {
+        students.add(student);
+        student.getCourses().add(this);
     }
 }
